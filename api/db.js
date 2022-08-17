@@ -1,11 +1,3 @@
-const createTournament = require('./createTournament');
+const data = { tournaments: [] };
 
-module.exports = () => {
-  const data = { tournaments: [] };
-
-  for (let i = 0; i < 50; i++) {
-    data.tournaments.push(createTournament());
-  }
-
-  return data;
-};
+module.exports = data;

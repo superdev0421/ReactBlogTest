@@ -13,7 +13,9 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
     "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
     "concurrently": "^7.3.0",
+    "express": "^4.18.1",
     "husky": "^8.0.1",
     "json-server": "^0.17.0",
     "lodash.random": "^3.2.0",
@@ -33,13 +35,14 @@
   },
   "scripts": {
     "start": "concurrently --kill-others \"npm run start:api\"  \"wait-for-localhost 4000 && npm run start:web\"",
-    "start:api": "json-server -p 4000 -m api/post.js -d -w ./api/db.js",
+    "start:api": "node ./api/server.js",
     "start:api:timeout": "json-server -p 4000 -m api/timeout.js -d -w ./api/db.js",
     "start:web": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "devServer": "nodemon ./api/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -66,5 +69,8 @@
     "@babel/runtime": "7.18.9",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
