@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react';
+// External Dependencies
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import axios from 'axios';
 
+// Internal Dependencies
 import GlobalStyle from './GlobalStyle';
-import { store } from './app/store'; 
+import { store } from './app/store';
 import Container from './components/Container/Container';
 import { TournamentList } from './components/TournamentList/TournamentList';
 
-
 const App: React.FC = () => {
-  // useEffect(() => {
-  //   axios.get()
-  // },[]);
   return (
     <Container>
       <TournamentList />

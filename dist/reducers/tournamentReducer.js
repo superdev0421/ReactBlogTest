@@ -20,7 +20,7 @@ const types_1 = require("../types/types");
 const api_1 = require("../constants/api");
 const initialState = {
     tournaments: [],
-    status: types_1.fetchStatus.IDLE
+    status: types_1.fetchStatus.IDLE,
 };
 exports.fetchTournaments = (0, toolkit_1.createAsyncThunk)('fetchTournaments', () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield axios_1.default.get(api_1.API_TOURNAMENTS_URL);
@@ -33,17 +33,17 @@ const tournamentSlice = (0, toolkit_1.createSlice)({
     reducers: {},
     extraReducers(builder) {
         builder
-            .addCase(exports.fetchTournaments.pending, state => {
+            .addCase(exports.fetchTournaments.pending, (state) => {
             state.status = types_1.fetchStatus.LOADING;
         })
             .addCase(exports.fetchTournaments.fulfilled, (state, action) => {
             state.status = types_1.fetchStatus.COMPLETED;
             state.tournaments = state.tournaments.concat(action.payload.data);
         })
-            .addCase(exports.fetchTournaments.rejected, state => {
+            .addCase(exports.fetchTournaments.rejected, (state) => {
             state.status = types_1.fetchStatus.FAILED;
         });
-    }
+    },
 });
 _a = tournamentSlice.actions;
 exports.default = tournamentSlice.reducer;
