@@ -8,7 +8,6 @@ export const StyledButton = styled.button`
   color: ${theme.palette.primary.main};
   padding: ${theme.spacing(2)};
   ${theme.typography.button};
-  margin-right:${theme.spacing(2)};
 
   &:hover {
     border: 1px solid ${theme.palette.secondary.light};
@@ -20,4 +19,3 @@ export const StyledButton = styled.button`
     color: ${theme.palette.primary.dark};
   }
 `;
-

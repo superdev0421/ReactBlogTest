@@ -1,22 +1,23 @@
-import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { IInitialState } from '../interface/interfaces'
+import { IInitialState } from '../interface/interfaces';
 import { fetchStatus } from '../types/types';
-import  {API_TOURNAMENTS_URL} from '../constants/api'
-
-
+import { API_TOURNAMENTS_URL } from '../constants/api';
 
 const initialState: IInitialState = {
-    tournaments: [],
-    status: fetchStatus.IDLE
-  };
+  tournaments: [],
+  status: fetchStatus.IDLE,
+};
 
-export const fetchTournaments = createAsyncThunk('fetchTournaments', async () => {
-  const res = await axios.get(API_TOURNAMENTS_URL);
-  console.log(res.data);
-  return res.data;
-})
+export const fetchTournaments = createAsyncThunk(
+  'fetchTournaments',
+  async () => {
+    const res = await axios.get(API_TOURNAMENTS_URL);
+    console.log(res.data);
+    return res.data;
+  }
+);
 
 export const createTournaments = createAsyncThunk('createTournaments', async (name:string) => {
   const res = await axios.post(API_TOURNAMENTS_URL, {name:name})
@@ -52,9 +53,6 @@ const tournamentSlice = createSlice({
 
 });
 
-export const {
-
-} = tournamentSlice.actions
-
+export const {} = tournamentSlice.actions;
 
 export default tournamentSlice.reducer;
