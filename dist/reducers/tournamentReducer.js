@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchTournaments = void 0;
+exports.createTournaments = exports.fetchTournaments = void 0;
 const toolkit_1 = require("@reduxjs/toolkit");
 const axios_1 = __importDefault(require("axios"));
 const types_1 = require("../types/types");
@@ -24,6 +24,11 @@ const initialState = {
 };
 exports.fetchTournaments = (0, toolkit_1.createAsyncThunk)('fetchTournaments', () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield axios_1.default.get(api_1.API_TOURNAMENTS_URL);
+    console.log(res.data);
+    return res.data;
+}));
+exports.createTournaments = (0, toolkit_1.createAsyncThunk)('createTournaments', (name) => __awaiter(void 0, void 0, void 0, function* () {
+    const res = yield axios_1.default.post(api_1.API_TOURNAMENTS_URL, { name: name });
     console.log(res.data);
     return res.data;
 }));
@@ -42,6 +47,11 @@ const tournamentSlice = (0, toolkit_1.createSlice)({
         })
             .addCase(exports.fetchTournaments.rejected, state => {
             state.status = types_1.fetchStatus.FAILED;
+        })
+            .addCase(exports.createTournaments.fulfilled, (state, action) => {
+            state.status = types_1.fetchStatus.COMPLETED;
+            const newTournaments = [...state.tournaments, action.payload.data];
+            state.tournaments = newTournaments;
         });
     }
 });

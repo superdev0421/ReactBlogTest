@@ -4,7 +4,7 @@ import {
 } from './Button.Styled'
 
 interface Props {
-    children ?: string
+    children ?: string,
 }
 
 const Button: FunctionComponent<Props> = ({children}) => {

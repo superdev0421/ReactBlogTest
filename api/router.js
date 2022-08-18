@@ -31,7 +31,7 @@ router.post('/add', (req, res) => {
     const newData = createTournament(name);
 
     data.tournaments.push(newData);
-    return res.status(200).json({ status: 'Success' });
+    return res.status(200).json({ status: 'Success', data: newData });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ status: 'Failed' });

@@ -18,7 +18,7 @@ const Container: FunctionComponent<Props>= ({children}) => {
             <H4>FACEIT Tournaments</H4>
             <StyledFlexBox>
                 <Input></Input>
-                <Button>CREATE ELEMENT</Button>
+                <Button>CREATE Tournament</Button>
             </StyledFlexBox>
             {children}
         </StyledContainer>

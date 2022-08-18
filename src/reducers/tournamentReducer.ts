@@ -18,11 +18,16 @@ export const fetchTournaments = createAsyncThunk('fetchTournaments', async () =>
   return res.data;
 })
 
+export const createTournaments = createAsyncThunk('createTournaments', async (name:string) => {
+  const res = await axios.post(API_TOURNAMENTS_URL, {name:name})
+  console.log(res.data)
+  return res.data;
+})
+
 const tournamentSlice = createSlice({
     name: 'tournaments',
     initialState,
     reducers: {
-      
     },
     extraReducers(builder) {
       builder
@@ -35,6 +40,11 @@ const tournamentSlice = createSlice({
         })
         .addCase(fetchTournaments.rejected, state => {
           state.status = fetchStatus.FAILED
+        })
+        .addCase(createTournaments.fulfilled, (state, action) => {
+          state.status = fetchStatus.COMPLETED;
+          const newTournaments = [...state.tournaments, action.payload.data];
+          state.tournaments = newTournaments
         })
     }
 

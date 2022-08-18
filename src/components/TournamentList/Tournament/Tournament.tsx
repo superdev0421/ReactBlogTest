@@ -9,6 +9,8 @@ import {
 import { ITournaments } from "../../../interface/interfaces";
 
 export const Tournament:React.FC<ITournaments> = ({id, game, name, organizer, participants, startDate}) => {
+
+
     return (
         <StyledTournament>
             <H6>{name}</H6>

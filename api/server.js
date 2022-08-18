@@ -9,7 +9,7 @@ const createTournament = require('./createTournament');
 const dbroute = require('./router');
 
 // Database Initializing
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i <8; i++) {
   data.tournaments.push(createTournament());
 }
 console.log('Database Initialized!');
