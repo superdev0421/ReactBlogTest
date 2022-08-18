@@ -4,13 +4,13 @@ import {
 } from './Button.Styled'
 
 interface Props {
-
+    children ?: string
 }
 
-const Button: FunctionComponent<Props> = () => {
+const Button: FunctionComponent<Props> = ({children}) => {
     return (
         <StyledButton>
-            CREATE TOURNAMENT
+            {children}
         </StyledButton>
     )
 };
