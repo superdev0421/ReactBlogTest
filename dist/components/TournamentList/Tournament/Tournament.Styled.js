@@ -10,11 +10,12 @@ exports.StyledTournament = styled_components_1.default.div `
   box-sizing: border-box;
   background: ${theme_1.default.palette.background.base};
   padding: ${theme_1.default.spacing(4)};
-  width:calc(33.33% - 16px);    
-  border-radius:${theme_1.default.spacing(1)};
+  width: calc(33.33% - 16px);
+  border-radius: ${theme_1.default.spacing(1)};
   color: ${theme_1.default.palette.text.primary};
 `;
 exports.StyledButtonGroup = styled_components_1.default.div `
-margin:${theme_1.default.spacing(2)} ${theme_1.default.spacing(2)} 0 0;
-
+  display: flex;
+  gap: ${theme_1.default.spacing(2)};
+  margin: ${theme_1.default.spacing(2)} ${theme_1.default.spacing(2)} 0 0;
 `;

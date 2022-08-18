@@ -13,7 +13,6 @@ exports.StyledButton = styled_components_1.default.button `
   color: ${theme_1.default.palette.primary.main};
   padding: ${theme_1.default.spacing(2)};
   ${theme_1.default.typography.button};
-  margin-right:${theme_1.default.spacing(2)};
 
   &:hover {
     border: 1px solid ${theme_1.default.palette.secondary.light};
