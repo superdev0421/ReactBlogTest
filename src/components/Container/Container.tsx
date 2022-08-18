@@ -9,7 +9,7 @@ import {
 } from './Container.Styled'
 
 interface Props {
-    children ?: JSX.Element[]
+    children ?: JSX.Element
 }
 
 const Container: FunctionComponent<Props>= ({children}) => {
@@ -18,7 +18,7 @@ const Container: FunctionComponent<Props>= ({children}) => {
             <H4>FACEIT Tournaments</H4>
             <StyledFlexBox>
                 <Input></Input>
-                <Button></Button>
+                <Button>CREATE ELEMENT</Button>
             </StyledFlexBox>
             {children}
         </StyledContainer>

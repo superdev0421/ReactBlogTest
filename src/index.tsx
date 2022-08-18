@@ -4,21 +4,18 @@ import { Provider } from 'react-redux';
 import axios from 'axios';
 
 import GlobalStyle from './GlobalStyle';
-import store from './store';
+import { store } from './app/store'; 
 import Container from './components/Container/Container';
-
-const BASE_URL = 'http://localhost:4000'
-
+import { TournamentList } from './components/TournamentList/TournamentList';
 
 
-const App = () => {
-
+const App: React.FC = () => {
   // useEffect(() => {
   //   axios.get()
   // },[]);
-
   return (
     <Container>
+      <TournamentList />
     </Container>
   );
 };
