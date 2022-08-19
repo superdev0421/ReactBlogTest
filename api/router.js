@@ -1,47 +1,50 @@
+/**
+==========================================
+ Title:  Tournament Item
+ Author: Edward
+ Date:   18 August 2022
+==========================================
+ */
+
 const express = require('express');
 const router = express.Router();
 const data = require('./db');
 const createTournament = require('./createTournament');
 
-//  route:    Get:/database/
+//  route:    Get:/tournaments/
 //  desc:     Get All The data from Database
 //  params:   none
 router.get('/', (req, res) => {
   // console.log("get the request");
   try {
-    if (data.tournaments.length === 0) {
-      return res.status(404).json({ status: 'No Data Found!' });
-    } else {
-      return res
-        .status(200)
-        .json({ status: 'Success', data: data.tournaments });
-    }
+    return res.status(200).json({ status: 'Success', data: data.tournaments });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ status: 'Failed' });
   }
 });
 
-//  route:    Post:/database/add
+//  route:    Post:/tournaments/add
 //  desc:     Add One Item to the database
 //  params:   name:string
 router.post('/add', (req, res) => {
   try {
     const { name } = req.body;
+    console.log(req.body);
     const newData = createTournament(name);
 
     data.tournaments.push(newData);
-    return res.status(200).json({ status: 'Success' });
+    return res.status(200).json({ status: 'Success', data: newData });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ status: 'Failed' });
   }
 });
 
-//  route:    Delete:/database/delete
+//  route:    Delete:/tournaments/delete
 //  desc:     Delete One Item from the database
 //  params:   id:string
-router.delete('/delete', (req, res) => {
+router.post('/delete', (req, res) => {
   try {
     const { id } = req.body;
 
@@ -56,31 +59,25 @@ router.delete('/delete', (req, res) => {
   }
 });
 
-//  route:    Post:/database/find
+//  route:    Post:/tournaments/find
 //  desc:     Find the items in the database
-//  params:   keyword:string
+//  params:   query:string
 router.post('/find', (req, res) => {
   try {
-    let { keyword } = req.body;
-    keyword = keyword.toLowerCase();
-
+    let { query } = req.body;
+    query = query.toLowerCase();
     const result = data.tournaments.filter((item) => {
       const lwrName = item.name.toLowerCase();
-      return lwrName.includes(keyword) === true;
+      return lwrName.includes(query) === true;
     });
-
-    if (result.length === 0) {
-      return res.status(404).json({ status: 'No data found!' });
-    } else {
-      return res.status(200).json({ status: 'Success', data: result });
-    }
+    return res.status(200).json({ status: 'Success', data: result });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ status: 'Failed' });
   }
 });
 
-//  route:    Post:/database/update
+//  route:    Post:/tournaments/update
 //  desc:     Update specified item in the database
 //  params:   { id:string, newName: string }
 router.post('/update', (req, res) => {
@@ -93,8 +90,8 @@ router.post('/update', (req, res) => {
       }
       return item;
     });
-    data.tournaments = newData;
-    return res.status(200).json({ status: 'Success', data: data.tournaments });
+    data.tournaments = newData
+    return res.status(200).json({ status: 'Success'});
   } catch (err) {
     console.log(err);
     return res.status(400).json({ status: 'Failed' });

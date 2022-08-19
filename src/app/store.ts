@@ -1,7 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import tournamentReducer from '../reducers/tournamentReducer';
-// import loginReducer from '../reducers/loginReducer';
-// import validateReducer from '../reducers/validateReducer';
 
 export const store = configureStore({
   reducer: {

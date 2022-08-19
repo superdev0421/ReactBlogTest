@@ -1,3 +1,11 @@
+/**
+==========================================
+ Title:  Tournament Item
+ Author: Edward
+ Date:   18 August 2022
+==========================================
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -8,15 +16,16 @@ const data = require('./db');
 const createTournament = require('./createTournament');
 const dbroute = require('./router');
 
+
 // Database Initializing
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 8; i++) {
   data.tournaments.push(createTournament());
 }
 console.log('Database Initialized!');
 
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Server is Running');

@@ -1,15 +1,26 @@
+/**
+==========================================
+ Title:  Tournament Item
+ Author: Edward
+ Date:   18 August 2022
+==========================================
+ */
+
 // External Dependencies
 import React, { useEffect } from 'react';
 
 // Internal Dependencies
-import { useAppSelector } from '../../app/hooks';
-import { useAppDispatch } from '../../app/hooks';
-import { ITournaments } from '../../interface/interfaces';
-import { fetchTournaments } from '../../reducers/tournamentReducer';
-import { fetchStatus } from '../../types/types';
 import { Tournament } from './Tournament/Tournament';
 import Button from '../Button/Button';
 import { Container, StyledTournamentList, Text } from './TournamentList.Styled';
+
+//type Dependencies
+import { ITournaments } from '../../interface/interfaces';
+import { fetchStatus } from '../../types/types';
+
+//Redux toolkit Dependencies
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { fetchTournaments } from '../../reducers/tournamentReducer';
 
 export const TournamentList: React.FC = () => {
   const dispatch = useAppDispatch();
