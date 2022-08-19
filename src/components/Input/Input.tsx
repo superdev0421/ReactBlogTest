@@ -1,3 +1,11 @@
+/**
+==========================================
+ Title:  Customized Input
+ Author: Edward
+ Date:   18 August 2022
+==========================================
+ */
+
 // External Dependencies
 import React, { FunctionComponent } from 'react';
 

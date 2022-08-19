@@ -1,7 +1,15 @@
-// @ts-check
+/**
+==========================================
+ Title:  Tournament Item
+ Author: Edward
+ Date:   18 August 2022
+==========================================
+ */
+
 const { faker } = require('@faker-js/faker');
 const random = require('lodash.random');
 const upperFirst = require('lodash.upperfirst');
+const moment = require('moment')
 
 const games = [
   'Counter-Strike: Global Offensive',
@@ -12,6 +20,8 @@ const games = [
 ];
 
 function createTournament(name) {
+  moment.locale('en-gb');
+  const startDate = moment().format("DD/MM/YYYY, HH:mm:ss");
   return {
     id: faker.datatype.uuid(),
     name:
@@ -27,7 +37,7 @@ function createTournament(name) {
       current: random(0, 256),
       max: 256,
     },
-    startDate: new Date().toISOString(),
+    startDate: startDate,
   };
 }
 
